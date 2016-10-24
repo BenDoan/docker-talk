@@ -1,6 +1,7 @@
 #!/usr/bin/env python2
 
 import datetime
+import time
 
 import psycopg2
 
@@ -8,7 +9,14 @@ from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
-conn = psycopg2.connect("dbname=click_counter user=postgres")
+conn = None
+while not conn:
+    try:
+        conn = psycopg2.connect(host="db", dbname="click_counter", user="docker", password="dbpass")
+    except Exception:
+        print "Failed to connect to db, retrying"
+        time.sleep(1)
+
 cur = conn.cursor()
 
 
