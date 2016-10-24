@@ -6,6 +6,7 @@ services:
             - POSTGRES_PASSWORD=pgpass
         volumes:
             - ./init-clicks-db.sh:/docker-entrypoint-initdb.d/init-clicks-db.sh
+            - ./container_data/postgres_data:/var/lib/postgresql/data
 
     web:
         image: click_counter
