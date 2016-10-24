@@ -23,7 +23,6 @@ cur = conn.cursor()
 @app.route('/')
 def hello_world():
     add_hit(request.remote_addr, datetime.datetime.now())
-    hits = get_hits()
     return render_template("index.html", hits=get_hits(), count=get_count())
 
 def get_count():
