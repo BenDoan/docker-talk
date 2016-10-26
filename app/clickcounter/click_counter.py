@@ -12,13 +12,13 @@ app = Flask(__name__)
 conn = None
 while not conn:
     try:
+        # conn = psycopg2.connect(dbname="click_counter", user="postgres")
         conn = psycopg2.connect(host="db", dbname="click_counter", user="docker", password="dbpass")
     except Exception:
         print "Failed to connect to db, retrying"
         time.sleep(1)
 
 cur = conn.cursor()
-
 
 @app.route('/')
 def hello_world():

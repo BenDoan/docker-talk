@@ -2,6 +2,7 @@ version: '2'
 services:
     db:
         image: postgres
+        restart: unless-stopped
         environment:
             - POSTGRES_PASSWORD=pgpass
         volumes:
@@ -10,8 +11,8 @@ services:
 
     web:
         image: click_counter
+        restart: unless-stopped
         depends_on:
             - db
         ports:
             - "80:5000"
-        restart: unless-stopped

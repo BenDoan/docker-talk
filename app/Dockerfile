@@ -1,7 +1,7 @@
 FROM debian:latest
 
 RUN apt-get update
-RUN apt-get install -q -y python python-dev python-pip libpq-dev
+RUN apt-get install -q -y python python-dev python-pip libpq-dev vim net-tools
 
 COPY ./clickcounter/requirements.txt /requirements.txt
 RUN pip install -r requirements.txt
